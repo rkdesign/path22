@@ -10,11 +10,11 @@ from girder.models.item import Item
 from girder.models.setting import Setting
 from girder_jobs.constants import JobStatus
 
-from histomicsui.models.case import Case
-from histomicsui.models.cohort import Cohort
-from histomicsui.models.image import Image
-from histomicsui.models.meta import pruneNoneValues, updateDict
-from histomicsui.models.slide import Slide
+from path22.models.case import Case
+from path22.models.cohort import Cohort
+from path22.models.image import Image
+from path22.models.meta import pruneNoneValues, updateDict
+from path22.models.slide import Slide
 
 from . import girder_utilities as utilities
 
@@ -113,7 +113,7 @@ def makeResources(self, admin, user):
         'TCGA-OR-A5J1-01Z-00-DX1.xml', user, self.aperioFolder)
 
 
-@pytest.mark.plugin('histomicsui')
+@pytest.mark.plugin('path22')
 class TestTCGAModel:
     def testPruneNoneValues(self):
         doc = {
@@ -314,7 +314,7 @@ class TestTCGAModel:
         assert Image().findOne({'_id': doc['_id']}).get('_id') == doc['_id']
 
 
-@pytest.mark.plugin('histomicsui')
+@pytest.mark.plugin('path22')
 class TestTCGARest:
     def runRecursiveImport(self, server, admin):
         # generate the async import task

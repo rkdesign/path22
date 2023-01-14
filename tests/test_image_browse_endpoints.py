@@ -5,7 +5,7 @@ from girder.models.item import Item
 from . import girder_utilities as utilities
 
 
-@pytest.mark.plugin('histomicsui')
+@pytest.mark.plugin('path22')
 class TestImageBrowseEndpoints:
     def makeResources(self, admin):
         self.folder = list(Folder().childFolders(admin, 'user', user=admin))[0]

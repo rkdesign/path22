@@ -1,4 +1,4 @@
-"""Test histomicsui endpoints"""
+"""Test path22 endpoints"""
 
 import json
 
@@ -12,15 +12,15 @@ from girder.models.setting import Setting
 from girder.models.user import User
 from girder.utility import config
 
-from histomicsui.constants import PluginSettings
+from path22.constants import PluginSettings
 
 from . import girder_utilities as utilities
 
 # This probably should be moved into a fixture
-config.getConfig()['histomicsui'] = {'restrict_downloads': True}
+config.getConfig()['path22'] = {'restrict_downloads': True}
 
 
-@pytest.mark.plugin('histomicsui')
+@pytest.mark.plugin('path22')
 class TestHUIResourceAndItem:
     def makeResources(self, admin):
         self.publicFolder = utilities.namedFolder(admin, 'Public')
@@ -219,7 +219,7 @@ class TestHUIResourceAndItem:
         assert meta['keyb']['keyd'] == 'valued'
 
 
-@pytest.mark.plugin('histomicsui')
+@pytest.mark.plugin('path22')
 class TestHUIEndpoints:
     def makeResources(self, admin):
         self.user2 = User().createUser(
@@ -233,11 +233,11 @@ class TestHUIEndpoints:
                 PluginSettings.HUI_DEFAULT_DRAW_STYLES,
                 PluginSettings.HUI_PANEL_LAYOUT}:
 
-            resp = server.request(path='/histomicsui/settings')
+            resp = server.request(path='/path22/settings')
             assert utilities.respStatus(resp) == 200
             settings = resp.json
             assert settings[key] is None
-            assert settings[PluginSettings.HUI_BRAND_NAME] == 'HistomicsUI'
+            assert settings[PluginSettings.HUI_BRAND_NAME] == 'path22'
 
             Setting().set(key, '')
             assert Setting().get(key) is None
@@ -251,7 +251,7 @@ class TestHUIEndpoints:
             Setting().set(key, value)
             assert json.loads(Setting().get(key)) == value
 
-            resp = server.request(path='/histomicsui/settings')
+            resp = server.request(path='/path22/settings')
             assert utilities.respStatus(resp) == 200
             settings = resp.json
             assert json.loads(settings[key]) == value
@@ -268,7 +268,7 @@ class TestHUIEndpoints:
             'good': {'alternate1': 'alternate1'},
         }, {
             'key': PluginSettings.HUI_BRAND_NAME,
-            'initial': 'HistomicsUI',
+            'initial': 'Path22',
             'bad': {'': 'not be empty'},
             'good': {'Alternate': 'Alternate'},
         }, {
@@ -320,7 +320,7 @@ class TestHUIEndpoints:
         resp = server.request(path='/histomics', method='GET', isJson=False, prefix='')
         assert utilities.respStatus(resp) == 200
         body = utilities.getBody(resp)
-        assert '<title>HistomicsUI</title>' in body
+        assert '<title>Path22</title>' in body
         resp = server.request(path='/alternate2', method='GET', isJson=False, prefix='')
         assert utilities.respStatus(resp) == 404
         Setting().set(PluginSettings.HUI_WEBROOT_PATH, 'alternate2')
@@ -370,65 +370,65 @@ class TestHUIEndpoints:
         ]]
         resp = server.request(
             method='PUT',
-            path='/histomicsui/quarantine/%s' % str(items[0]['_id']))
+            path='/path22/quarantine/%s' % str(items[0]['_id']))
         assert utilities.respStatus(resp) == 401
         assert 'Write access denied' in resp.json['message']
         resp = server.request(
             method='PUT', user=user,
-            path='/histomicsui/quarantine/%s' % str(items[0]['_id']))
+            path='/path22/quarantine/%s' % str(items[0]['_id']))
         assert utilities.respStatus(resp) == 400
         assert 'The quarantine folder is not configure' in resp.json['message']
         key = PluginSettings.HUI_QUARANTINE_FOLDER
         Setting().set(key, str(privateFolder['_id']))
         resp = server.request(
             method='PUT', user=user,
-            path='/histomicsui/quarantine/%s' % str(items[0]['_id']))
+            path='/path22/quarantine/%s' % str(items[0]['_id']))
         assert utilities.respStatus(resp) == 200
         resp = server.request(
             method='PUT', user=user,
-            path='/histomicsui/quarantine/%s' % str(items[0]['_id']))
+            path='/path22/quarantine/%s' % str(items[0]['_id']))
         assert utilities.respStatus(resp) == 403
         assert 'Write access denied' in resp.json['message']
         resp = server.request(
             method='PUT', user=user,
-            path='/histomicsui/quarantine/%s' % str(items[2]['_id']))
+            path='/path22/quarantine/%s' % str(items[2]['_id']))
         assert utilities.respStatus(resp) == 403
         assert 'Write access denied' in resp.json['message']
         resp = server.request(
             method='PUT', user=admin,
-            path='/histomicsui/quarantine/%s' % str(items[2]['_id']))
+            path='/path22/quarantine/%s' % str(items[2]['_id']))
         assert utilities.respStatus(resp) == 200
         resp = server.request(
             method='PUT', user=admin,
-            path='/histomicsui/quarantine/%s' % str(items[4]['_id']))
+            path='/path22/quarantine/%s' % str(items[4]['_id']))
         assert utilities.respStatus(resp) == 400
         assert 'already in the quarantine' in resp.json['message']
         # Restore
         resp = server.request(
             method='PUT', user=admin,
-            path='/histomicsui/quarantine/%s/restore' % str(items[1]['_id']))
+            path='/path22/quarantine/%s/restore' % str(items[1]['_id']))
         assert utilities.respStatus(resp) == 400
         assert 'no quarantine record' in resp.json['message']
         resp = server.request(
             method='PUT',
-            path='/histomicsui/quarantine/%s/restore' % str(items[0]['_id']))
+            path='/path22/quarantine/%s/restore' % str(items[0]['_id']))
         assert utilities.respStatus(resp) == 401
         assert 'Write access denied' in resp.json['message']
         resp = server.request(
             method='PUT', user=user,
-            path='/histomicsui/quarantine/%s/restore' % str(items[0]['_id']))
+            path='/path22/quarantine/%s/restore' % str(items[0]['_id']))
         assert utilities.respStatus(resp) == 403
         assert 'Write access denied' in resp.json['message']
         resp = server.request(
             method='PUT', user=admin,
-            path='/histomicsui/quarantine/%s/restore' % str(items[0]['_id']))
+            path='/path22/quarantine/%s/restore' % str(items[0]['_id']))
         assert utilities.respStatus(resp) == 200
         resp = server.request(
             method='PUT', user=admin,
-            path='/histomicsui/quarantine/%s/restore' % str(items[0]['_id']))
+            path='/path22/quarantine/%s/restore' % str(items[0]['_id']))
         assert utilities.respStatus(resp) == 400
         assert 'no quarantine record' in resp.json['message']
         resp = server.request(
             method='PUT', user=user,
-            path='/histomicsui/quarantine/%s' % str(items[0]['_id']))
+            path='/path22/quarantine/%s' % str(items[0]['_id']))
         assert utilities.respStatus(resp) == 200

@@ -1,10 +1,10 @@
 =======================================
-HistomicsUI |build-status| |codecov-io|
+path22 |build-status| |codecov-io|
 =======================================
 
 Organize, visualize, and analyze histology images.
 
-`HistomicsUI`_ organizes and manages whole slide image (WSI) files using Girder_.  It has a dedicated interface to select WSI, add annotations manually, and to run analysis and algorithms on all or parts of images.
+`path22`_ organizes and manages whole slide image (WSI) files using Girder_.  It has a dedicated interface to select WSI, add annotations manually, and to run analysis and algorithms on all or parts of images.
 
 Girder provides authentication, access control, and diverse storage options, including using local file systems and Amazon S2.  WSI images are read and displayed via the large_image_ module.  Algorithms are containerized using Docker_ and are run using the slicer_cli_web_ Girder plugin.  These can be run on multiple worker machines via `Girder Worker`_ and celery_.
 
@@ -25,7 +25,7 @@ Prerequisites:
 
 .. code-block:: bash
 
-  pip install histomicsui[analysis] --find-links https://girder.github.io/large_image_wheels
+  pip install Path22[analysis] --find-links https://girder.github.io/large_image_wheels
   girder build
   girder serve
 
@@ -36,19 +36,19 @@ To use Girder Worker:
   pip install girder_slicer_cli_web[worker]
   GW_DIRECT_PATHS=true girder_worker -l info -Ofair --prefetch-multiplier=1
 
-The first time you start HistomicsUI, you'll also need to configure Girder with at least one user and one assetstore (see the Girder_ documentation).  Additionally, it is recommended that you install the HistomicsTK_ algorithms.  This can be done going to the Admin Console, Plugins, Slicer CLI Web settings.  Set a default task upload folder, then import the ``dsarchive/histomicstk:latest`` docker image.
+The first time you start Path22, you'll also need to configure Girder with at least one user and one assetstore (see the Girder_ documentation).  Additionally, it is recommended that you install the HistomicsTK_ algorithms.  This can be done going to the Admin Console, Plugins, Slicer CLI Web settings.  Set a default task upload folder, then import the ``dsarchive/histomicstk:latest`` docker image.
 
 Reference Deployment
 ====================
 
-The standard deployment of HistomicsUI is the `Digital Slide Archive`_.  The associated repository has tools for readily installing via Docker, VirtualBox, or shell scripts on Ubuntu.
+The standard deployment of Path22 is the `Digital Slide Archive`_.  The associated repository has tools for readily installing via Docker, VirtualBox, or shell scripts on Ubuntu.
 
 Development
 ===========
 
-The most convenient way to develop on HistomicsUI is to use the `devops scripts from the Digital Slide Archive <https://github.com/DigitalSlideArchive/digital_slide_archive/tree/master/devops>`_.
+The most convenient way to develop on Path22 is to use the `devops scripts from the Digital Slide Archive <https://github.com/DigitalSlideArchive/digital_slide_archive/tree/master/devops>`_.
 
-If you are making changes to the HistomicsUI frontend, you can make Girder watch the source code and perform hot reloads on changes using the ``--watch-plugin`` argument to ``girder build``. See the `Girder docs <https://girder.readthedocs.io/en/stable/development.html#during-development>`_ for more information.
+If you are making changes to the Path22 frontend, you can make Girder watch the source code and perform hot reloads on changes using the ``--watch-plugin`` argument to ``girder build``. See the `Girder docs <https://girder.readthedocs.io/en/stable/development.html#during-development>`_ for more information.
 
 Annotations and Metadata from Jobs
 ----------------------------------
@@ -74,7 +74,7 @@ Funding
 -------
 This work was funded in part by the NIH grant U24-CA194362-01_.
 
-.. _HistomicsUI: https://github.com/DigitalSlideArchive/HistomicsUI
+.. _Path22: https://github.com/DigitalSlideArchive/Path22
 .. _Docker: https://www.docker.com/
 .. _Kitware: https://www.kitware.com/
 .. _U24-CA194362-01: http://grantome.com/grant/NIH/U24-CA194362-01
@@ -89,10 +89,10 @@ This work was funded in part by the NIH grant U24-CA194362-01_.
 .. _HistomicsTK: https://github.com/DigitalSlideArchive/HistomicsTK
 .. _Digital Slide Archive: https://github.com/DigitalSlideArchive/digital_slide_archive
 
-.. |build-status| image:: https://circleci.com/gh/DigitalSlideArchive/HistomicsUI.svg?style=svg
-    :target: https://circleci.com/gh/DigitalSlideArchive/HistomicsUI
+.. |build-status| image:: https://circleci.com/gh/DigitalSlideArchive/Path22.svg?style=svg
+    :target: https://circleci.com/gh/DigitalSlideArchive/Path22
     :alt: Build Status
 
-.. |codecov-io| image:: https://img.shields.io/codecov/c/github/DigitalSlideArchive/HistomicsUI.svg
-    :target: https://codecov.io/github/DigitalSlideArchive/HistomicsUI?branch=master
+.. |codecov-io| image:: https://img.shields.io/codecov/c/github/DigitalSlideArchive/Path22.svg
+    :target: https://codecov.io/github/DigitalSlideArchive/Path22?branch=master
     :alt: codecov.io

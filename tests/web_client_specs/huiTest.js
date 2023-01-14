@@ -27,9 +27,9 @@
             $('body').css('overflow', 'hidden');
             girder.router.enabled(false);
             girder.events.trigger('g:appload.before');
-            girder.plugins.histomicsui.panels.DrawWidget.throttleAutosave = false;
+            girder.plugins.path22.panels.DrawWidget.throttleAutosave = false;
 
-            app = new girder.plugins.histomicsui.App({
+            app = new girder.plugins.path22.App({
                 el: 'body',
                 parentView: null
             });
@@ -103,7 +103,7 @@
         }, 'image to load');
         girderTest.waitForLoad();
         runs(function () {
-            expect(girder.plugins.histomicsui.router.getQuery('image')).toBe(imageId);
+            expect(girder.plugins.path22.router.getQuery('image')).toBe(imageId);
             currentImageId = imageId;
             deferred.resolve(imageId);
         });

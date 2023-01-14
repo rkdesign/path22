@@ -2,6 +2,6 @@ import pytest
 from girder.plugin import loadedPlugins
 
 
-@pytest.mark.plugin('histomicsui')
+@pytest.mark.plugin('path22')
 def test_import(server):
-    assert 'histomicsui' in loadedPlugins()
+    assert 'path22' in loadedPlugins()

@@ -1,7 +1,7 @@
 /* global huiTest */
 
-girderTest.importPlugin('jobs', 'large_image', 'large_image_annotation', 'slicer_cli_web', 'histomicsui');
-girderTest.addScript('/static/built/plugins/histomicsui/huiTest.js');
+girderTest.importPlugin('jobs', 'large_image', 'large_image_annotation', 'slicer_cli_web', 'path22');
+girderTest.addScript('/static/built/plugins/path22/huiTest.js');
 
 girderTest.promise.done(function () {
     huiTest.startApp();
@@ -18,7 +18,7 @@ girderTest.promise.done(function () {
                         url: '/system/setting',
                         method: 'PUT',
                         data: {
-                            key: 'histomicsui.panel_layout',
+                            key: 'path22.panel_layout',
                             value: JSON.stringify([{
                                 name: 'annotation',
                                 state: 'closed'

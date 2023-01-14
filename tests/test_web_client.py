@@ -17,7 +17,7 @@ from . import girder_utilities as utilities
 
 def copyHUITest():
     src = os.path.join(os.path.dirname(__file__), 'web_client_specs', 'huiTest.js')
-    dest = os.path.join(STATIC_ROOT_DIR, 'built/plugins/histomicsui', 'huiTest.js')
+    dest = os.path.join(STATIC_ROOT_DIR, 'built/plugins/path22', 'huiTest.js')
     if not os.path.exists(dest) or os.path.getmtime(src) != os.path.getmtime(dest):
         shutil.copy2(src, dest)
 
@@ -43,7 +43,7 @@ def makeResources(server, fsAssetstore, admin, user):
     annotation = Annotation().setPublic(annotation, True, save=True)
 
     Folder().createFolder(user, 'subfolder', parentType='user', public=True, creator=user)
-    utilities.uploadTestFile('.histomicsui_config.yaml', user, fsAssetstore, 'subfolder')
+    utilities.uploadTestFile('.path22_config.yaml', user, fsAssetstore, 'subfolder')
     utilities.uploadExternalFile(
         'sample_svs_image.TCGA-DU-6399-01A-01-TS1.e8eb65de-d63e-42db-af6f-14fefbbdf7bd.svs',
         user, fsAssetstore, folderName='subfolder', name='image.svs')
@@ -131,7 +131,7 @@ class MockSlicerCLIWebResource(Resource):
         return {'_id': 'jobid'}
 
 
-@pytest.mark.plugin('histomicsui')
+@pytest.mark.plugin('path22')
 @pytest.mark.parametrize('spec', (
     'analysisSpec.js',
     'annotationSpec.js',

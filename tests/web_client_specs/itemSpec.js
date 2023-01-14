@@ -1,17 +1,17 @@
 /* globals girder, girderTest, describe, it, expect, waitsFor, runs */
 
-girderTest.importPlugin('jobs', 'large_image', 'large_image_annotation', 'slicer_cli_web', 'histomicsui');
+girderTest.importPlugin('jobs', 'large_image', 'large_image_annotation', 'slicer_cli_web', 'Path22');
 
 girderTest.startApp();
 
-describe('Test the HistomicsUI itemUI screen', function () {
+describe('Test the Path22 itemUI screen', function () {
     var brandName = 'TestBrandName';
     var webRootPath = 'TestRootPath';
 
     it('login', function () {
         girderTest.login('admin', 'Admin', 'Admin', 'password')();
     });
-    it('change the HistomicsUI settings', function () {
+    it('change the Path22 settings', function () {
         waitsFor(function () {
             return $('a.g-nav-link[g-target="admin"]').length > 0;
         }, 'admin console link to load');
@@ -29,8 +29,8 @@ describe('Test the HistomicsUI itemUI screen', function () {
             return $('.g-plugin-config-link').length > 0;
         }, 'the plugins page to load');
         runs(function () {
-            expect($('.g-plugin-config-link[g-route="plugins/histomicsui/config"]').length > 0);
-            $('.g-plugin-config-link[g-route="plugins/histomicsui/config"]').click();
+            expect($('.g-plugin-config-link[g-route="plugins/path22/config"]').length > 0);
+            $('.g-plugin-config-link[g-route="plugins/path22/config"]').click();
         });
         girderTest.waitForLoad();
         waitsFor(function () {
@@ -43,16 +43,16 @@ describe('Test the HistomicsUI itemUI screen', function () {
         });
         waitsFor(function () {
             var resp = girder.rest.restRequest({
-                url: 'histomicsui/settings',
+                url: 'path22/settings',
                 method: 'GET',
                 async: false
             });
             var settings = resp.responseJSON;
-            var settingsBrandName = (settings && settings['histomicsui.brand_name']);
-            var settingsWebRootPath = (settings && settings['histomicsui.webroot_path']);
+            var settingsBrandName = (settings && settings['path22.brand_name']);
+            var settingsWebRootPath = (settings && settings['path22.webroot_path']);
 
             return settingsBrandName === brandName && settingsWebRootPath === webRootPath;
-        }, 'HistomicsUI settings to change');
+        }, 'Path22 settings to change');
     });
     it('mock Webgl', function () {
         var GeojsViewer = window.girder.plugins.large_image.views.imageViewerWidget.geojs;
@@ -97,12 +97,12 @@ describe('Test the HistomicsUI itemUI screen', function () {
         });
         girderTest.waitForLoad();
     });
-    it('has a Open HistomicsUI button with TestBrandName', function () {
+    it('has a Open Path22 button with TestBrandName', function () {
         runs(function () {
             expect($('.g-hui-open-item').text().indexOf(brandName) !== -1).toBe(true);
         });
     });
-    it('has a Open HistomicsUI button with link to webRootPath', function () {
+    it('has a Open Path22 button with link to webRootPath', function () {
         runs(function () {
             expect($('.g-hui-open-item').attr('href').indexOf(webRootPath) !== -1).toBe(true);
         });

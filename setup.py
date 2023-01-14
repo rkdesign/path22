@@ -24,7 +24,7 @@ def prerelease_local_scheme(version):
 
 
 setup(
-    name='histomicsui',
+    name='path22',
     use_scm_version={'local_scheme': prerelease_local_scheme, 'fallback_version': 'development'},
     setup_requires=['setuptools-scm'],
     description='Organize, visualize, and analyze histology images.',
@@ -57,14 +57,14 @@ setup(
     long_description=readme,
     long_description_content_type='text/x-rst',
     include_package_data=True,
-    keywords='girder-plugin, histomicsui',
+    keywords='girder-plugin, path22',
     packages=find_packages(exclude=['test', 'test.*']),
-    url='https://github.com/DigitalSlideArchive/histomicsui',
+    url='https://github.com/DigitalSlideArchive/path22',
     zip_safe=False,
     python_requires='>=3.6',
     entry_points={
         'girder.plugin': [
-            'histomicsui = histomicsui:GirderPlugin'
+            'path22 = path22:GirderPlugin'
         ]
     },
 )

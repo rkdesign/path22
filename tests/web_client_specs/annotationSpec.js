@@ -1,7 +1,7 @@
 /* global huiTest */
 
-girderTest.importPlugin('jobs', 'large_image', 'large_image_annotation', 'slicer_cli_web', 'histomicsui');
-girderTest.addScript('/static/built/plugins/histomicsui/huiTest.js');
+girderTest.importPlugin('jobs', 'large_image', 'large_image_annotation', 'slicer_cli_web', 'path22');
+girderTest.addScript('/static/built/plugins/path22/huiTest.js');
 
 function asciiToUint8Array(text) {
     var l = text.length, arr = new Uint8Array(l), i;
@@ -1459,7 +1459,7 @@ girderTest.promise.done(function () {
             girderTest.waitForLoad();
             runs(function () {
                 var imageId = huiTest.imageId();
-                expect(girder.plugins.histomicsui.router.getQuery('image')).toBe(imageId);
+                expect(girder.plugins.path22.router.getQuery('image')).toBe(imageId);
             });
         });
     });
@@ -1498,7 +1498,7 @@ girderTest.promise.done(function () {
                 girderTest.waitForLoad();
                 runs(function () {
                     var imageId = huiTest.imageId();
-                    expect(girder.plugins.histomicsui.router.getQuery('image')).toBe(imageId);
+                    expect(girder.plugins.path22.router.getQuery('image')).toBe(imageId);
                 });
             });
         });
@@ -1542,11 +1542,11 @@ girderTest.promise.done(function () {
                     var resp = girder.rest.restRequest({
                         url: 'system/setting',
                         method: 'GET',
-                        data: {list: JSON.stringify(['histomicsui.default_draw_styles'])},
+                        data: {list: JSON.stringify(['path22.default_draw_styles'])},
                         async: false
                     });
                     var settings = resp.responseJSON;
-                    var settingsStyles = settings && JSON.parse(settings['histomicsui.default_draw_styles']);
+                    var settingsStyles = settings && JSON.parse(settings['path22.default_draw_styles']);
                     if (!settingsStyles || !settingsStyles.length) {
                         return false;
                     }

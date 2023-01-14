@@ -1,4 +1,4 @@
-girderTest.importPlugin('jobs', 'large_image', 'large_image_annotation', 'slicer_cli_web', 'histomicsui');
+girderTest.importPlugin('jobs', 'large_image', 'large_image_annotation', 'slicer_cli_web', 'path22');
 
 girderTest.startApp();
 
@@ -42,7 +42,7 @@ describe('itemList', function () {
             return $('.g-item-actions-button').length > 0;
         });
     });
-    it('has a Open HistomicsUI button', function () {
+    it('has a Open Path22 button', function () {
         runs(function () {
             expect($('.g-hui-open-item').length).toBe(1);
         });

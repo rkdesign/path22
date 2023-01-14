@@ -6,7 +6,7 @@ YAML Configuration Files
 
 See the `large_image <https://github.com/girder/large_image/blob/master/docs/girder_config_options.rst>`_ documentation for general yaml configuration file details on specifying different values for different users and groups.
 
-.histomicsui_config.yaml
+.path22.yaml
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 This is used to specify annotation groups available for marking annotations.
@@ -61,9 +61,9 @@ This is used to specify annotation groups available for marking annotations.
 Girder Configuration
 --------------------
 
-There is a histomicsui section that can be added to the Girder configuration file::
+There is a path22 section that can be added to the Girder configuration file::
 
-    [histomicsui]
+    [path22]
     # If restrict_downloads is True, only logged-in users can access download
     # and tiles/images endpoints.  If this is a number, file and item download
     # endpoints can be used by anonymous users for files up to the specified

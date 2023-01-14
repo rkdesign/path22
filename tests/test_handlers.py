@@ -10,7 +10,7 @@ from girder_large_image_annotation.models.annotation import Annotation
 from . import girder_utilities as utilities
 
 
-@pytest.mark.plugin('histomicsui')
+@pytest.mark.plugin('path22')
 class TestHUIHandlers:
     def testAnnotationHandler(self, server, fsAssetstore, admin):
         file = utilities.uploadExternalFile('Easy1.png', admin, fsAssetstore)

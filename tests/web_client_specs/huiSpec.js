@@ -1,11 +1,11 @@
 /* globals girder, girderTest, describe, it, expect, waitsFor, runs */
 
-girderTest.importPlugin('jobs', 'large_image', 'large_image_annotation', 'slicer_cli_web', 'histomicsui');
+girderTest.importPlugin('jobs', 'large_image', 'large_image_annotation', 'slicer_cli_web', 'Path22');
 
 girderTest.startApp();
 
-describe('Test the HistomicsUI plugin', function () {
-    it('change the HistomicsUI settings', function () {
+describe('Test the Path22 plugin', function () {
+    it('change the Path22 settings', function () {
         var styles = [{'lineWidth': 8, 'id': 'Sample Group'}];
         var styleJSON = JSON.stringify(styles);
 
@@ -27,8 +27,8 @@ describe('Test the HistomicsUI plugin', function () {
             return $('.g-plugin-config-link').length > 0;
         }, 'the plugins page to load');
         runs(function () {
-            expect($('.g-plugin-config-link[g-route="plugins/histomicsui/config"]').length > 0);
-            $('.g-plugin-config-link[g-route="plugins/histomicsui/config"]').click();
+            expect($('.g-plugin-config-link[g-route="plugins/path22/config"]').length > 0);
+            $('.g-plugin-config-link[g-route="plugins/path22/config"]').click();
         });
         girderTest.waitForLoad();
         waitsFor(function () {
@@ -44,16 +44,16 @@ describe('Test the HistomicsUI plugin', function () {
                 method: 'GET',
                 data: {
                     list: JSON.stringify([
-                        'histomicsui.default_draw_styles'
+                        'path22.default_draw_styles'
                     ])
                 },
                 async: false
             });
             var settings = resp.responseJSON;
-            var settingsStyles = settings && JSON.parse(settings['histomicsui.default_draw_styles']);
+            var settingsStyles = settings && JSON.parse(settings['path22.default_draw_styles']);
             return (settingsStyles && settingsStyles.length === 1 &&
                     settingsStyles[0].lineWidth === styles[0].lineWidth);
-        }, 'HistomicsUI settings to change');
+        }, 'Path22 settings to change');
         girderTest.waitForLoad();
         runs(function () {
             $('#g-hui-default-draw-styles').val('not a json list');

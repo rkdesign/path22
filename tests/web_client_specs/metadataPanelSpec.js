@@ -1,7 +1,7 @@
 /* global huiTest */
 
-girderTest.importPlugin('jobs', 'large_image', 'large_image_annotation', 'slicer_cli_web', 'histomicsui');
-girderTest.addScript('/static/built/plugins/histomicsui/huiTest.js');
+girderTest.importPlugin('jobs', 'large_image', 'large_image_annotation', 'slicer_cli_web', 'Path22');
+girderTest.addScript('/static/built/plugins/path22/huiTest.js');
 
 girderTest.promise.done(function () {
     huiTest.startApp();

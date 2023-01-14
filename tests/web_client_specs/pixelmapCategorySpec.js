@@ -1,9 +1,9 @@
 /* globals beforeEach, afterEach, describe, it, expect, girder, backbone, waitsFor, runs, _, huiTest */
 
-girderTest.importPlugin('jobs', 'large_image', 'large_image_annotation', 'slicer_cli_web', 'histomicsui');
+girderTest.importPlugin('jobs', 'large_image', 'large_image_annotation', 'slicer_cli_web', 'path22');
 girderTest.addScripts([
-    '/static/built/plugins/histomicsui/huiTest.js',
-    '/static/built/plugins/histomicsui/extra/sinon.js'
+    '/static/built/plugins/path22/huiTest.js',
+    '/static/built/plugins/path22/extra/sinon.js'
 ]);
 
 girderTest.promise.done(function () {
@@ -20,12 +20,12 @@ girderTest.promise.done(function () {
             });
         });
         describe('pixelmap behavior', function () {
-            var girder, largeImageAnnotation, histomicsUI, pixelmapId, pixelmapAnnotation, pixelmapElement, fetched, newCategory, newGroup;
+            var girder, largeImageAnnotation, path22, pixelmapId, pixelmapAnnotation, pixelmapElement, fetched, newCategory, newGroup;
             var stubDebounce;
             beforeEach(function () {
                 girder = window.girder;
                 largeImageAnnotation = girder.plugins.large_image_annotation;
-                histomicsUI = girder.plugins.histomicsui;
+                path22 = girder.plugins.path22;
             });
 
             it('creates a pixelmap annotation', function () {
@@ -99,7 +99,7 @@ girderTest.promise.done(function () {
             it('creates a new category for style groups', function () {
                 pixelampElement = pixelmapAnnotation.elements().first();
                 var groups = huiTest.app.bodyView.drawWidget._groups;
-                newGroup = new histomicsUI.models.StyleModel({
+                newGroup = new path22.models.StyleModel({
                     id: 'category2',
                     fillColor: 'rgb(255, 0, 0)',
                     lineColor: 'rgb(255, 0, 0)'
