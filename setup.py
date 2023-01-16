@@ -59,7 +59,7 @@ setup(
     include_package_data=True,
     keywords='girder-plugin, path22',
     packages=find_packages(exclude=['test', 'test.*']),
-    url='https://github.com/DigitalSlideArchive/path22',
+    url='https://github.com/rkdesign/path22',
     zip_safe=False,
     python_requires='>=3.6',
     entry_points={

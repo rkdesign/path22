@@ -188,12 +188,12 @@ def validatePath22QuarantineFolder(doc):
 
 # Defaults that have fixed values are added to the system defaults dictionary.
 SettingDefault.defaults.update({
-    PluginSettings.HUI_WEBROOT_PATH: 'histomics',
+    PluginSettings.HUI_WEBROOT_PATH: 'path22',
     PluginSettings.HUI_BRAND_NAME: 'Path22',
     PluginSettings.HUI_BANNER_COLOR: '#f8f8f8',
     PluginSettings.HUI_BRAND_COLOR: '#777777',
     PluginSettings.HUI_HELP_URL:
-        'https://github.com/DigitalSlideArchive/Path22/blob/master/docs/controls.rst',
+        'https://github.com/rkdesign/Path22/blob/master/docs/controls.rst',
     PluginSettings.HUI_HELP_TOOLTIP: 'Mouse and keyboard controls',
     PluginSettings.HUI_HELP_TEXT: 'Help'
 })
